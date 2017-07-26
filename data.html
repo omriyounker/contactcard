@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <script
+    src="http://code.jquery.com/jquery-3.2.1.js"
+    integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript">
+      function addCard(event){
+        event.preventDefault();
+        var inputForm = "<div class='card'> <h2 class ='names'>" + $('#first_name').val() + " " +        $('#last_name').val() + "</h2> <p class ='des'>" + $('#textareastuff').val() + "</p> </div>";
+
+        $("#cards").append(inputForm);//end of append
+        $('.card h2').show();
+        $('.card p').hide();
+      }
+      $(document).on("click", ".card", function(){
+        $('.names', this).toggle();
+        $('.des', this).toggle();
+
+      })
+
+      $(document).ready(function(){
+
+      })//end of doc.ready
+    </script>
+
+  </head>
+  <body>
+    <div id="wrap">
+      <div>
+        <form class="form1" action="data.html" method="post" onsubmit="addCard(event);">
+          <label for="first_name">First Name:</label>
+          <input type="text" id="first_name" name="first_name">
+          <br>
+          <label for="last_name">Last Name:</label>
+          <input type="text" id = "last_name" name = "last_name">
+          <br>
+          <label for="description">Description</label>
+          <br>
+          <textarea name="description" rows="8" cols="30" id = "textareastuff"></textarea>
+          <br>
+          <input type="submit" name="button" id="btn" value="Add Card">
+        </form>
+      </div>
+      <div id="cards">
+      </div>
+    </div>
+  </body>
+</html>
